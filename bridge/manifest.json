@@ -1,0 +1,7 @@
+{
+  "name": "com.fiverr_mcp.bridge",
+  "description": "Fiverr MCP native messaging bridge",
+  "path": "PLACEHOLDER",
+  "type": "stdio",
+  "allowed_origins": ["chrome-extension://YOUR_EXTENSION_ID/"]
+}

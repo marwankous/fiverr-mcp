@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Fiverr MCP Bridge",
+  "version": "1.0.0",
+  "description": "Connects Claude to your Fiverr account via native messaging",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "permissions": ["tabs", "scripting", "nativeMessaging", "activeTab"],
+  "host_permissions": ["*://*.fiverr.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.fiverr.com/*"],
+      "js": ["content/interceptor.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["*://*.fiverr.com/*"],
+      "js": [
+        "content/router.js",
+        "actions/profile.js",
+        "actions/gigs.js",
+        "actions/orders.js",
+        "actions/messages.js",
+        "actions/analytics.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
